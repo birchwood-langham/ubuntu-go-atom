@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t guoguojin/ubuntu-go-atom:1.18.0 .
+docker build -t guoguojin/ubuntu-go-atom:1.21.1 .

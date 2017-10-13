@@ -1,4 +1,4 @@
-FROM birchwoodlangham/ubuntu-base-atom:1.18.0
+FROM birchwoodlangham/ubuntu-base-atom:1.21.1
 
 RUN apt-get update && \
     apt-get install -y -qq --fix-missing python-pip powerline && \
@@ -6,9 +6,9 @@ RUN apt-get update && \
     pip install --upgrade pip && \
     pip install psutil thefuck && \
     useradd -d /home/user -m -U user && \
-    wget https://storage.googleapis.com/golang/go1.8.3.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.8.3.linux-amd64.tar.gz && \
-    rm go1.8.3.linux-amd64.tar.gz
+    wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.9.1.linux-amd64.tar.gz && \
+    rm go1.9.1.linux-amd64.tar.gz
 
 USER user
 WORKDIR /home/user
