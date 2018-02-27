@@ -1,4 +1,4 @@
-FROM birchwoodlangham/ubuntu-base-atom:1.21.1
+FROM birchwoodlangham/ubuntu-base-atom:1.24.0
 
 RUN apt-get update && \
     apt-get install -y -qq --fix-missing python-pip powerline && \
@@ -6,9 +6,9 @@ RUN apt-get update && \
     pip install --upgrade pip && \
     pip install psutil thefuck && \
     useradd -d /home/user -m -U user && \
-    wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz && \
-    tar -C /usr/local -xzf go1.9.1.linux-amd64.tar.gz && \
-    rm go1.9.1.linux-amd64.tar.gz
+    wget https://dl.google.com/go/go1.10.linux-amd64.tar.gz && \
+    tar -C /usr/local -xzf go1.10.linux-amd64.tar.gz && \
+    rm go1.10.linux-amd64.tar.gz
 
 USER user
 WORKDIR /home/user
@@ -28,17 +28,22 @@ RUN git clone https://github.com/powerline/fonts.git && \
     mkdir -p /home/user/.vim && \
     git clone https://github.com/VundleVim/Vundle.vim.git /home/user/.vim/bundle/Vundle.vim && \
     vim +PluginInstall +qall && \
-    export PATH=$PATH:/usr/local/go/bin && \
     export GOPATH=$HOME/go && \
+    export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin && \
     go get -u golang.org/x/tools/cmd/goimports && \
     go get -u golang.org/x/tools/cmd/gorename && \
     go get -u github.com/sqs/goreturns && \
     go get -u github.com/nsf/gocode && \
     go get -u github.com/alecthomas/gometalinter && \
     go get -u github.com/zmb3/gogetdoc && \
+    go get -u github.com/zmb3/goaddimport && \
     go get -u github.com/rogpeppe/godef && \
     go get -u golang.org/x/tools/cmd/guru && \
-    go get -u github.com/derekparker/delve/cmd/dlv
+    go get -u github.com/fatih/gomodifytags && \
+    go get -u github.com/tpng/gopkgs && \
+    go get -u github.com/derekparker/delve/cmd/dlv && \
+    go get -u github.com/sourcegraph/go-langserver && \
+    /usr/bin/apm install go-plus go-debug atom-ide-ui ide-go
 
 VOLUME ["/home/user/go", "/home/user/.atom"]
 

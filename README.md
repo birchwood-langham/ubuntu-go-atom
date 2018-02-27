@@ -30,4 +30,5 @@ With regards to the $HOME/develop/go path, this will become your $GOPATH locatio
 ## Change Log
 
 2017-10-13: Updated Atom and Go versions
+2018-03-01: Updated Atom and Go versions to 1.24.0 and updated build to install Atom Go plugins
 =======
